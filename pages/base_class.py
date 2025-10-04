@@ -1,23 +1,24 @@
-from playwright.sync_api import sync_playwright, Page ,BrowserContext,Browser
+from playwright.sync_api import sync_playwright, Page
 class BaseClass:
+  
+  def __init__(self,page:Page):
+      self.page=page
+      
+  def navigate_to(self, url:url):
+      self.page.goto(url)   
+   
+  def get_page_title(self):
+      return self.page.title()   
+  
+  def type_text(self, selector : str, text:str , Clear:bool=True):
+      locator=self.page.locator(selector)
+      if Clear:
+          locator.fill("")
+      locator.type(text) 
+  
+  def is_visible(self,selector:str) -> bool:     
+        return  self.page.locator(selector).is_visible()
     
-    def __init__(self):
-        self.playwright =None 
-        self.browser=None
-        self.context=None
-        self.page=None
-        
-    def open(self):
-        self.playwright = sync_playwright().start()
-        self.browser=self.playwright.chromium.launch(headless=True)
-        self.context=self.browser.new_context()
-        self.page=self.context.new_page()
-        
-    def close(self):
-         if self.context:
-             self.context.close()
-         if self.browser:
-             self.browser.close()
-         if self.playwright:
-             self.playwright.stop()
-                     
+  def wait_for_selector(self,selector:str):
+      self.page.wait_for_selector(selector)  
+    
