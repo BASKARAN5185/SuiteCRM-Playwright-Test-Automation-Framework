@@ -4,7 +4,7 @@ class BaseClass:
   def __init__(self,page:Page):
       self.page=page
       
-  def navigate_to(self, url:url):
+  def navigate_to(self, url:str):
       self.page.goto(url)   
    
   def get_page_title(self):
@@ -21,4 +21,7 @@ class BaseClass:
     
   def wait_for_selector(self,selector:str):
       self.page.wait_for_selector(selector)  
+   
+  def click(self,selector:str)-> bool:
+       self.page.click(selector)    
     
