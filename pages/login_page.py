@@ -6,6 +6,7 @@ class LoginPage(BaseClass):
     LOGIN='#bigbutton'
     HEADER_LOGO='//a[title="SuiteCRM"]'
     COMPANY_LOGO='.companylogo'
+    HOME_TEXT="//*[.,text()='Welcome to the SuiteCRM 7 Demo']"
 
     def enter_username(self,username:str):
         self.type_text(self.USER_NAME,username)
@@ -16,14 +17,18 @@ class LoginPage(BaseClass):
     def click_login_button(self):
         self.click(self.LOGIN) 
     
-    def login(self,username:str,password:str):
+    def login(self,username:str,password:str) -> bool:
         self.enter_username(username)
         self.enter_password(password)
         self.click_login_button()
+        return self.is_home_page_text_visible()
     
     def header_logo_is_visible(self) -> bool:
-        self.is_visible(self.HEADER_LOGO)
+        return self.is_visible(self.HEADER_LOGO)
     
     def company_logo_is_visible(self) -> bool:
-        self.is_visible(self.COMPANY_LOGO)        
-              
+        return self.is_visible(self.COMPANY_LOGO)    
+    
+    def is_home_page_text_visible(self) -> bool:
+        self.wait_for_selector(self.HOME_TEXT)        
+        return self.is_visible(self.HOME_TEXT)      
