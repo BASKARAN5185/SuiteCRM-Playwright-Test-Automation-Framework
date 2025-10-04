@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+.cache/
+*.log
+
+# Test result files
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# Playwright specific
+playwright-report/
+test-results/
+*.zip
+
+# Virtual environment
+venv/
+.env/
+.env.*  # dotenv environment config
+
+# VS Code / IDE settings
+.vscode/
+.idea/
+
+# OS generated
+.DS_Store
+Thumbs.db
