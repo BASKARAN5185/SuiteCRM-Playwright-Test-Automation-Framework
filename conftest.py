@@ -20,12 +20,12 @@ def page(browser)->Page:
     yield page
     context.close()
     
-@pytest.fixture
-def login(page):
+@pytest.fixture(scope='function')
+def perform_login(page):
     page.goto('https://demo.suiteondemand.com/index.php?action=Login&module=Users')
     page.locator('#user_name').fill('will')
     page.locator('#username_password').fill('will')
     page.locator('#bigbutton').click()
     yield
-
-        
+       
+       

@@ -1,13 +1,13 @@
-from base_class import BaseClass
+from pages.base_class import BaseClass
 
 class LoginPage(BaseClass):
     USER_NAME='#user_name'
     USER_PASSWORD='#username_password'
     LOGIN='#bigbutton'
-    HEADER_LOGO='//a[title="SuiteCRM"]'
+    HEADER_LOGO='a[title="SuiteCRM"]'
     COMPANY_LOGO='.companylogo'
-    HOME_TEXT="//*[.,text()='Welcome to the SuiteCRM 7 Demo']"
-
+    HOME_TEXT="//*[text()='Welcome to the SuiteCRM 7 Demo']"
+    
     def enter_username(self,username:str):
         self.type_text(self.USER_NAME,username)
     
