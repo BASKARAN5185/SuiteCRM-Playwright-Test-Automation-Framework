@@ -1,4 +1,4 @@
-from base_class import BaseClass
+from pages.base_class import BaseClass
 
 class HomePage(BaseClass):
       HOME_ICON='a.navbar-brand with-home-icon suitepicon suitepicon-action-home'
