@@ -13,22 +13,22 @@ def perform_login(page):
     yield page 
     return page
 
-@pytest.mark.skip
+@pytest.mark.retest
 def test_user_icon_visible(perform_login):
     home=HomePage(perform_login)
     assert home.user_icon_visible() , 'User icon is not visible'
 
-@pytest.mark.skip
+@pytest.mark.somke
 def test_notification_icon_visible(perform_login):
     home=HomePage(perform_login)
     assert home.notification_icon_visible() , 'Notification icon is not visible'
 
-@pytest.mark.skip
+@pytest.mark.smoke
 def test_search_button_visible(perform_login):
     home=HomePage(perform_login)
     assert home.search_button_visible() , 'Search button is not visible'
 
-@pytest.mark.retest
+@pytest.mark.smoke
 def test_create_button_click(perform_login):
     home=HomePage(perform_login)
     home.create_button_visible_and_click()

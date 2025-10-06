@@ -10,13 +10,13 @@ class HomePage(BaseClass):
       ALL='#grouptab_5' 
       #Create Dropdown Locators
       CREATE = 'li#quickcreatetop > a.dropdown-toggle'
-      CREATE_ACCOUNT='a[text=Create Accounts] > a.dropdown-toggle'
+      CREATE_ACCOUNT='role=link[name="Create Accounts"]'
       
-      SEARCH_BUTTON="(//button[@id='searchbutton'])[2]"
+      SEARCH_BUTTON="(//button[@id='searchbutton'])[3]"
       SEARCH_INPUT_BOX_BUTTON="(//button[@type='submit'])[3]"
       SEARCH_TEXTBOX="(//input[@id='query_string'])[3]"
       NOTIFICATION_ICON="(//button[contains(@class,'alertsButton btn')])[3]"
-      USER_ICON = "button#usermenucollapsed:not([hidden]):visible"
+      USER_ICON = "button#usermenucollapsed .nth(2)"
 
       def user_icon_visible(self):
           locator = self.page.locator("button#usermenucollapsed")
