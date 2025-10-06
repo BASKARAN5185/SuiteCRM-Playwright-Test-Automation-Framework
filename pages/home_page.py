@@ -8,20 +8,34 @@ class HomePage(BaseClass):
       ACTIVITIES='#grouptab_3'
       COLLABORATION='a#grouptab_4'
       ALL='#grouptab_5' 
-      CREATE="(//a[@class='dropdown-toggle'])[2]"
+      #Create Dropdown Locators
+      CREATE = 'li#quickcreatetop > a.dropdown-toggle'
+      CREATE_ACCOUNT='a[text=Create Accounts] > a.dropdown-toggle'
+      
       SEARCH_BUTTON="(//button[@id='searchbutton'])[2]"
       SEARCH_INPUT_BOX_BUTTON="(//button[@type='submit'])[3]"
       SEARCH_TEXTBOX="(//input[@id='query_string'])[3]"
-      NOTIFICATION_ICON="(//button[contains(@class,'alertsButton btn')])[2]"
-      USER_ICON = "(//span[@class='suitepicon suitepicon-action-current-user'])[1]"
+      NOTIFICATION_ICON="(//button[contains(@class,'alertsButton btn')])[3]"
+      USER_ICON = "button#usermenucollapsed:not([hidden]):visible"
 
+      def user_icon_visible(self):
+          locator = self.page.locator("button#usermenucollapsed")
+          count = locator.count()
+          print(f"Found {count} buttons with #usermenucollapsed")
 
-      def user_icon_visible(self) -> bool:
-            return self.is_visible(self.USER_ICON)
+          locator.nth(1).click(force=True)
+
+          locator.wait_for(state="visible", timeout=10000)
+          locator.click()
+          return True
+
       
       def user_icon_click(self):
             self.click(self.USER_ICON)
-
+            
+      def Create_account_dropdown_click(self):     
+           self.click(self.CREATE_ACCOUNT)
+                 
       def notification_icon_visible(self) -> bool:
             return self.is_visible(self.NOTIFICATION_ICON)
 
@@ -34,17 +48,19 @@ class HomePage(BaseClass):
       def search_button_click(self):
           self.click(self.SEARCH_BUTTON)
       
-      def seaerch_textbox_visible(self) -> bool:
+      def search_textbox_visible(self) -> bool:
           return self.is_visible(self.SEARCH_TEXTBOX) 
 
       def search_textbox_fill(self,text):
           self.fill(self.SEARCH_TEXTBOX,text)
 
-      def search_input_box_click(self):
+      def search_input_box_button_click(self):
           self.click(self.SEARCH_INPUT_BOX_BUTTON)
 
-      def create_click(self):
-            self.click(self.CREATE)
+      def create_button_visible_and_click(self):
+         create_button = self.page.locator(self.CREATE).nth(2)
+         create_button.wait_for(state="visible", timeout=10000)
+         create_button.click()
       
       def home_icon_click(self):
           self.click(self.HOME_ICON)
