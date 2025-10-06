@@ -1,20 +1,19 @@
 from pages.base_class import BaseClass
 
 class HomePage(BaseClass):
-      HOME_ICON='a.navbar-brand with-home-icon suitepicon suitepicon-action-home'
-      ALL = '#grouptab_0'
-      MARKETING ='text="MARKETING"'
-      SUPPORT='text="SUPPORT"'
-      ACTIVITIES='text="ACTIVITIES"'
-      COLLABORATION='text="COLLABRATION"'
-      ALL='#grouptab_0'
-      HOME='a:has-text("Home")'
-      CREATE='text="Create"'
-      SEARCH_BUTTON='button#searchbutton'
+      HOME_ICON="//a[contains(@class,'navbar-brand with-home-icon')]"
+      SALES = '#grouptab_0'
+      MARKETING ='#grouptab_1'
+      SUPPORT='#grouptab_2'
+      ACTIVITIES='#grouptab_3'
+      COLLABORATION='a#grouptab_4'
+      ALL='#grouptab_5' 
+      CREATE="(//a[@class='dropdown-toggle'])[2]"
+      SEARCH_BUTTON="(//button[@id='searchbutton'])[2]"
       SEARCH_INPUT_BOX_BUTTON="(//button[@type='submit'])[3]"
-      SEARCH_TEXTBOX='input#query_string'
-      NOTIFICATION_ICON='li#desktop_notifications'
-      USER_ICON = 'button#usermenucollapsed >> nth=0'
+      SEARCH_TEXTBOX="(//input[@id='query_string'])[3]"
+      NOTIFICATION_ICON="(//button[contains(@class,'alertsButton btn')])[2]"
+      USER_ICON = "(//span[@class='suitepicon suitepicon-action-current-user'])[1]"
 
 
       def user_icon_visible(self) -> bool:
@@ -94,5 +93,5 @@ class HomePage(BaseClass):
            print(f"Debug: Hover failed on element '{self.ALL}': {e}")
 
 
-      def home_dropdown_click(self):      
-          self.click(self.HOME)
+      def home_dropdown_click(self,dropdown_index :int) :      
+          self.click(f"(//a[@id='moduleTab_6_Home'])[{dropdown_index}]")

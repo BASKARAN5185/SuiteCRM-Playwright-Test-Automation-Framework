@@ -32,7 +32,7 @@ def test_search_button_visible(perform_login):
 def test_create_button_click(perform_login):
     home=HomePage(perform_login)
     home.create_click()
-    create_option=home.page.get_byText("Create Account")
+    create_option=home.page.get_by_text("Create Account")
     expect(create_option).to_be_visible(timeout=5000)
     assert create_option.is_visible() , 'Create button click is not working'
 
@@ -42,54 +42,48 @@ def test_home_icon_click(perform_login):
     home.home_icon_click()
     assert home.get_url().contains('index') , 'Home icon click is not working'
 
-@pytest.mark.menu
+@pytest.mark.smoke
 def test_sales_menu_dropdown(perform_login):   
-    home=HomePage(perform_login)
+    home = HomePage(perform_login)
     home.sales_menu_over()
-    assert home.page.get_byText("Accounts").is_visible() , 'Sales drop down menu is not visible'
-    home.home_dropdown_click()
-    assert home.get_url.contains('Sales') , 'Sales drop down menu home page navigigation is not working'
+    home.home_dropdown_click(1)
+    assert 'Sales' in home.get_url(), 'Sales drop down menu home page navigation is not working'
 
-@pytest.mark.menu
+@pytest.mark.smoke
 def test_marketing_menu_dropdown(perform_login):
-    home=HomePage(perform_login)
+    home = HomePage(perform_login)
     home.marketing_menu_over()
-    assert home.page.get_byText("Campaigns").is_visible() , 'Marketing drop down menu is not visible'
-    home.home_dropdown_click()
-    assert home.get_url.contains('Marketing') , 'Marketing drop down menu home page navigigation is not working'
+    home.home_dropdown_click(2)
+    assert 'Marketing' in home.get_url(), 'Marketing drop down menu home page navigation is not working'
 
-@pytest.mark.menu
+@pytest.mark.smoke
 def test_support_menu_dropdown(perform_login): 
-    home=HomePage(perform_login)
+    home = HomePage(perform_login)
     home.support_menu_over()
-    assert home.page.get_byText("Bugs").is_visible() , 'Support drop down menu is not visible'
-    home.home_dropdown_click()
-    assert home.get_url.contains('Support') , 'Support drop down menu home page navigigation is not working'
+    home.home_dropdown_click(3)
+    assert 'Support' in home.get_url(), 'Support drop down menu home page navigation is not working'
 
-@pytest.mark.menu
+@pytest.mark.smoke
 def test_activities_menu_dropdown(perform_login):              
-    home=HomePage(perform_login)
+    home = HomePage(perform_login)
     home.activities_menu_over()
-    assert home.page.get_byText("Calls").is_visible() , 'Activities drop down menu is not visible'
-    home.home_dropdown_click()
-    assert home.get_url.contains('Activities') , 'Activities drop down menu home page navigigation is not working'
+    home.home_dropdown_click(4)
+    assert 'Activities' in home.get_url(), 'Activities drop down menu home page navigation is not working'
 
-@pytest.mark.menu
-def test_collabration_menu_dropdown(perform_login):        
-    home=HomePage(perform_login)
-    home.collabration_menu_over()
-    assert home.page.get_byText("Documents").is_visible() , 'Collabration drop down menu is not visible'
-    home.home_dropdown_click()
-    assert home.get_url.contains('Collaboration') , 'Collabration drop down menu home   page navigigation is not working'   
+@pytest.mark.smoke
+def test_collaboration_menu_dropdown(perform_login):        
+    home = HomePage(perform_login)
+    home.collaboration_menu_over()
+    home.home_dropdown_click(5)
+    assert 'Collaboration' in home.get_url(), 'Collaboration drop down menu home page navigation is not working'
 
-@pytest.mark.menu1
+@pytest.mark.smoke
 def test_all_menu_dropdown(perform_login):        
-    home=HomePage(perform_login)
+    home = HomePage(perform_login)
     home.all_menu_over()
-    assert home.page.get_by_text("Activities").is_visible() , 'All drop down menu is not visible'
-    home.home_dropdown_click()
-    assert home.get_url.contains('All') , 'All drop down menu home page navigigation is not working'
-
+    home.home_dropdown_click(6)
+    assert 'All' in home.get_url(), 'All drop down menu home page navigation is not working'
+    
 @pytest.mark.sanity
 def test_user_icon_click(perform_login):
     home=HomePage(perform_login)
