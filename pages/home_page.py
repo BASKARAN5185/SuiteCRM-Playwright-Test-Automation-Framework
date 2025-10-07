@@ -14,33 +14,33 @@ class HomePage(BaseClass):
       
       SEARCH_BUTTON="(//button[@id='searchbutton'])[3]"
       SEARCH_INPUT_BOX_BUTTON="(//button[@type='submit'])[3]"
-      SEARCH_TEXTBOX="(//input[@id='query_string'])[3]"
+      SEARCH_TEXTBOX="(//input[@id='query_string'])[1]"
       NOTIFICATION_ICON="(//button[contains(@class,'alertsButton btn')])[3]"
-      USER_ICON = "button#usermenucollapsed .nth(2)"
+      USER_ICON = 'button#usermenucollapsed span.suitepicon-action-user-small'
 
-      def user_icon_visible(self):
+      def user_icon_visible(self,index:int):
           locator = self.page.locator("button#usermenucollapsed")
           count = locator.count()
           print(f"Found {count} buttons with #usermenucollapsed")
 
-          locator.nth(1).click(force=True)
+          locator.nth(index).click(force=True)
 
           locator.wait_for(state="visible", timeout=10000)
           locator.click()
           return True
 
       
-      def user_icon_click(self):
-            self.click(self.USER_ICON)
+      def user_icon_click(self,index:int):
+            self.click(self.USER_ICON).nth(index)
             
       def Create_account_dropdown_click(self):     
            self.click(self.CREATE_ACCOUNT)
                  
       def notification_icon_visible(self) -> bool:
-            return self.is_visible(self.NOTIFICATION_ICON)
+           return self.is_visible(self.NOTIFICATION_ICON)
 
-      def notification_icon_click(self):
-            self.click(self.NOTIFICATION_ICON)
+      def notification_icon_click(self) -> bool:
+           return self.click(self.NOTIFICATION_ICON)
 
       def search_button_visible(self) -> bool:
           return self.is_visible(self.SEARCH_BUTTON)

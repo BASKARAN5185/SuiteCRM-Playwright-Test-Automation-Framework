@@ -13,10 +13,10 @@ def perform_login(page):
     yield page 
     return page
 
-@pytest.mark.retest
+@pytest.mark.retest1
 def test_user_icon_visible(perform_login):
     home=HomePage(perform_login)
-    assert home.user_icon_visible() , 'User icon is not visible'
+    assert home.user_icon_visible(0) , 'User icon is not visible'
 
 @pytest.mark.somke
 def test_notification_icon_visible(perform_login):
@@ -83,19 +83,19 @@ def test_all_menu_dropdown(perform_login):
     home.home_dropdown_click(6)
     assert 'All' in home.get_url(), 'All drop down menu home page navigation is not working'
     
-@pytest.mark.skip
+@pytest.mark.retest1
 def test_user_icon_click(perform_login):
     home=HomePage(perform_login)
-    home.user_icon_click()
-    assert home.user_icon_click()
+    home.user_icon_click(0)
+    assert home.user_icon_click(0)
     
-@pytest.mark.skip
+@pytest.mark.retest
 def test_notification_icon_click(perform_login):
     home=HomePage(perform_login)
     home.notification_icon_visible()
     assert home.notification_icon_click()
 
-@pytest.mark.skip
+@pytest.mark.retest
 def test_search_box_validation(perform_login):
     home=HomePage(perform_login)
     home.search_button_click()
