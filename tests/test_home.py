@@ -13,22 +13,28 @@ def perform_login(page):
     yield page 
     return page
 
-@pytest.mark.retest1
+@pytest.mark.smoke
+@pytest.mark.homepage
+@pytest.mark.retest
 def test_user_icon_visible(perform_login):
     home=HomePage(perform_login)
     assert home.user_icon_visible(0) , 'User icon is not visible'
 
 @pytest.mark.somke
+@pytest.mark.homepage
+@pytest.mark.retest
 def test_notification_icon_visible(perform_login):
     home=HomePage(perform_login)
     assert home.notification_icon_visible() , 'Notification icon is not visible'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_search_button_visible(perform_login):
     home=HomePage(perform_login)
     assert home.search_button_visible() , 'Search button is not visible'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_create_button_click(perform_login):
     home=HomePage(perform_login)
     home.create_button_visible_and_click()
@@ -36,12 +42,14 @@ def test_create_button_click(perform_login):
     assert 'Accounts&return_action' in home.get_url(), "Create Account Page naviagtion is not working "
     
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_home_icon_click(perform_login):
     home=HomePage(perform_login)
     home.home_icon_click()
     assert 'index' in home.get_url(), 'Home icon click is not working'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_sales_menu_dropdown(perform_login):   
     home = HomePage(perform_login)
     home.sales_menu_over()
@@ -49,6 +57,7 @@ def test_sales_menu_dropdown(perform_login):
     assert 'Sales' in home.get_url(), 'Sales drop down menu home page navigation is not working'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_marketing_menu_dropdown(perform_login):
     home = HomePage(perform_login)
     home.marketing_menu_over()
@@ -56,6 +65,7 @@ def test_marketing_menu_dropdown(perform_login):
     assert 'Marketing' in home.get_url(), 'Marketing drop down menu home page navigation is not working'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_support_menu_dropdown(perform_login): 
     home = HomePage(perform_login)
     home.support_menu_over()
@@ -63,6 +73,7 @@ def test_support_menu_dropdown(perform_login):
     assert 'Support' in home.get_url(), 'Support drop down menu home page navigation is not working'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_activities_menu_dropdown(perform_login):              
     home = HomePage(perform_login)
     home.activities_menu_over()
@@ -70,6 +81,7 @@ def test_activities_menu_dropdown(perform_login):
     assert 'Activities' in home.get_url(), 'Activities drop down menu home page navigation is not working'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_collaboration_menu_dropdown(perform_login):        
     home = HomePage(perform_login)
     home.collaboration_menu_over()
@@ -77,25 +89,32 @@ def test_collaboration_menu_dropdown(perform_login):
     assert 'Collaboration' in home.get_url(), 'Collaboration drop down menu home page navigation is not working'
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_all_menu_dropdown(perform_login):        
     home = HomePage(perform_login)
     home.all_menu_over()
     home.home_dropdown_click(6)
     assert 'All' in home.get_url(), 'All drop down menu home page navigation is not working'
     
-@pytest.mark.retest1
+@pytest.mark.retest
+@pytest.mark.homepage
+@pytest.mark.regression
 def test_user_icon_click(perform_login):
     home=HomePage(perform_login)
     home.user_icon_click(0)
     assert home.user_icon_click(0)
     
 @pytest.mark.retest
+@pytest.mark.homepage
+@pytest.mark.regression
 def test_notification_icon_click(perform_login):
     home=HomePage(perform_login)
     home.notification_icon_visible()
     assert home.notification_icon_click()
 
 @pytest.mark.retest
+@pytest.mark.homepage
+@pytest.mark.regression
 def test_search_box_validation(perform_login):
     home=HomePage(perform_login)
     home.search_button_click()
@@ -105,6 +124,7 @@ def test_search_box_validation(perform_login):
     assert "loss innocence" in home.get_url(), "search filter is not working properly"
 
 @pytest.mark.smoke
+@pytest.mark.homepage
 def test_get_url(perform_login):
     home=HomePage(perform_login)
     assert home.get_url()=='https://demo.suiteondemand.com/index.php?module=Home&action=Demo' , 'URL is not matching'

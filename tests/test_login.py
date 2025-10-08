@@ -27,16 +27,22 @@ def login(perform_login):
     login_page = LoginPage(page)
     return login_page
 
+@pytest.mark.smoke
+@pytest.mark.loginpage
 @pytest.mark.ragression
 def test_header_logo_visible(go_to_login_page):
     login=LoginPage(go_to_login_page)
     assert login.header_logo_is_visible() , 'Header logo is not visible'
 
 @pytest.mark.smoke
+@pytest.mark.loginpage
+@pytest.mark.ragression
 def test_company_logo_visble(go_to_login_page):
     login=LoginPage(go_to_login_page)
-    assert login.company_logo_is_visible() , 'Comapny logo is not visible' 
-
+    assert login.company_logo_is_visible() , 'Comapny logo is not visible'
+     
+@pytest.mark.smoke
+@pytest.mark.loginpage
 @pytest.mark.sanity
 def test_Home_craeate_button_visible(login):
     assert login.is_home_page_text_visible() , 'Home page navigtion is failed '
