@@ -1,4 +1,5 @@
 from pages.base_class import BaseClass
+from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError
 
 class HomePage(BaseClass):
       HOME_ICON="//a[contains(@class,'navbar-brand with-home-icon')]"
@@ -16,20 +17,13 @@ class HomePage(BaseClass):
       SEARCH_INPUT_BOX_BUTTON="(//button[@type='submit'])[3]"
       SEARCH_TEXTBOX="(//input[@id='query_string'])[1]"
       NOTIFICATION_ICON="(//button[contains(@class,'alertsButton btn')])[3]"
-      USER_ICON = 'button#usermenucollapsed span.suitepicon-action-user-small'
+      USER_ICON = 'button:has(span.suitepicon-action-current-user)'
 
-      def user_icon_visible(self,index:int):
-          locator = self.page.locator("button#usermenucollapsed")
-          count = locator.count()
-          print(f"Found {count} buttons with #usermenucollapsed")
+      def user_icon_visible(self,index:int) -> bool:
+          locator = self.page.locator(self.USER_ICON)
+          locator.nth(index).wait_for(state="visible", timeout=10000)
+          return locator.nth(index).is_visible()
 
-          locator.nth(index).click(force=True)
-
-          locator.wait_for(state="visible", timeout=10000)
-          locator.click()
-          return True
-
-      
       def user_icon_click(self,index:int):
             self.click(self.USER_ICON).nth(index)
             

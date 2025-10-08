@@ -15,10 +15,9 @@ def perform_login(page):
 
 @pytest.mark.smoke
 @pytest.mark.homepage
-@pytest.mark.retest
 def test_user_icon_visible(perform_login):
     home=HomePage(perform_login)
-    assert home.user_icon_visible(0) , 'User icon is not visible'
+    assert home.user_icon_visible(1) , 'User icon is not visible'
 
 @pytest.mark.somke
 @pytest.mark.homepage
@@ -101,8 +100,8 @@ def test_all_menu_dropdown(perform_login):
 @pytest.mark.regression
 def test_user_icon_click(perform_login):
     home=HomePage(perform_login)
-    home.user_icon_click(0)
-    assert home.user_icon_click(0)
+    home.user_icon_visible(1)
+    assert home.user_icon_click(1)
     
 @pytest.mark.retest
 @pytest.mark.homepage
