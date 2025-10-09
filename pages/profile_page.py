@@ -23,9 +23,18 @@ class profile_page(BaseClass):
     IM_NAME='input#messenger_id'
     ADDRESS_CITY='input[name="address_city"]'
     ADDRESS_POSTAL_CODE='input[name="address_postalcode"]'
-    IM_TYPE='select#messenger_type'
+    IM_TYPE_DROPDOWN='select#messenger_type'
     ADDRESS_STREET="input#address_street"
     ADDRESS_STATE="input#address_state"
     ADDRESS_COUNTRY="input#address_country"
     DESCRIPTION='textarea'
+    
+    '''Email Settings under locators'''
+    EMAIL_ADDRESS_ADD_BUTTON="button.btn.btn-danger.email-address-add-button"
+    EMAIL_ADDRESS_REMOVE_BUTTON="button#Users0removeButton0"
+    EMAIL_PRIMARY_RADIO_BUTTON='input[type="radio"][name="Users0emailAddressPrimaryFlag"]'
+    EMAIL_REPLAY_TO_CHECKBOX='input[type="checkbox"][name="Users0emailAddressReplyToFlag"]'   
+    EMAIL_CLIENT_DROPDOWN="[name='email_link_type']"
+    EMAIL_EDITOR_DROPDOWN="[name='editor_type']" 
+    
     
