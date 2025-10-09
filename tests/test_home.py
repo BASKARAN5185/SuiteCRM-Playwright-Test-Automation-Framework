@@ -34,12 +34,61 @@ def test_search_button_visible(perform_login):
 
 @pytest.mark.smoke
 @pytest.mark.homepage
-def test_create_button_click(perform_login):
+def test_account_creation_button_click(perform_login):
     home=HomePage(perform_login)
     home.create_button_visible_and_click()
     home.Create_account_dropdown_click()
     assert 'Accounts&return_action' in home.get_url(), "Create Account Page naviagtion is not working "
     
+@pytest.mark.smoke
+@pytest.mark.homepage
+def test_call_creation_button_click(perform_login):
+    home=HomePage(perform_login)
+    home.create_button_visible_and_click()
+    home.Create_calls_dropdown_click()
+    assert 'Calls&return_action' in home.get_url(), "Create Call Page naviagtion is not working "  
+    
+@pytest.mark.smoke
+@pytest.mark.homepage
+def test_contacts_creation_button_click(perform_login):
+    home=HomePage(perform_login)
+    home.create_button_visible_and_click()
+    home.Create_contact_dropdown_click()
+    assert 'Contacts&return_action' in home.get_url(), "Create Contact Page naviagtion is not working "   
+    
+@pytest.mark.smoke
+@pytest.mark.homepage
+def test_documents_creation_button_click(perform_login):
+    home=HomePage(perform_login)
+    home.create_button_visible_and_click()
+    home.Create_documents_dropdown_click()
+    assert 'Documents&return_action' in home.get_url(), "Create Documents Page naviagtion is not working "
+    
+@pytest.mark.smoke
+@pytest.mark.homepage
+def test_leads_creation_button_click(perform_login):
+    home=HomePage(perform_login)
+    home.create_button_visible_and_click()
+    home.Create_leads_dropdown_click()
+    assert 'Leads&return_action' in home.get_url(), "Create Leads Page naviagtion is not working "              
+    
+@pytest.mark.smoke
+@pytest.mark.homepage
+def test_opportunities_creation_button_click(perform_login):
+    home=HomePage(perform_login)
+    home.create_button_visible_and_click()
+    home.Create_oppoertunities_dropdown_click()
+    assert 'Opportunities&return_action' in home.get_url(), "Create Oppourtunities Page naviagtion is not working "      
+    
+    
+@pytest.mark.smoke
+@pytest.mark.homepage
+def test_task_creation_button_click(perform_login):
+    home=HomePage(perform_login)
+    home.create_button_visible_and_click()
+    home.Create_task_dropdown_click()
+    assert 'Tasks&return_action' in home.get_url(), "Create Task Page naviagtion is not working "  
+        
 @pytest.mark.smoke
 @pytest.mark.homepage
 def test_home_icon_click(perform_login):

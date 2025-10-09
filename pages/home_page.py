@@ -9,10 +9,17 @@ class HomePage(BaseClass):
       ACTIVITIES='#grouptab_3'
       COLLABORATION='a#grouptab_4'
       ALL='#grouptab_5' 
+      
       #Create Dropdown Locators
       CREATE = 'li#quickcreatetop > a.dropdown-toggle'
-      CREATE_ACCOUNT='role=link[name="Create Accounts"]'
-      
+      CREATE_ACCOUNT="xpath=(//a[contains(text(), 'Create Accounts')])[3]"
+      CREATE_CONTACT="xpath=(//a[contains(text(), 'Create Contacts')])[3]"
+      CREATE_OPPORTUNITIES="xpath=(//a[contains(text(), 'Create Opportunities')])[3]"
+      CREATE_LEADS="xpath=(//a[contains(text(), 'Create Leads')])[3]"
+      CREATE_DOCUMENTS="xpath=(//a[contains(text(), 'Create Documents')])[3]"
+      CREATE_CALLS="xpath=(//a[contains(text(), 'Create Calls')])[3]"
+      CREATE_TASK="xpath=(//a[contains(text(), 'Create Tasks')])[3]"
+
       SEARCH_BUTTON="(//button[@id='searchbutton'])[3]"
       SEARCH_INPUT_BOX_BUTTON="(//button[@type='submit'])[3]"
       SEARCH_TEXTBOX="(//input[@id='query_string'])[1]"
@@ -29,6 +36,24 @@ class HomePage(BaseClass):
             
       def Create_account_dropdown_click(self):     
            self.click(self.CREATE_ACCOUNT)
+           
+      def Create_contact_dropdown_click(self):     
+           self.click(self.CREATE_CONTACT)
+           
+      def Create_oppoertunities_dropdown_click(self):     
+           self.click(self.CREATE_OPPORTUNITIES)
+           
+      def Create_leads_dropdown_click(self):     
+           self.click(self.CREATE_LEADS)               
+      
+      def Create_calls_dropdown_click(self):     
+           self.click(self.CREATE_CALLS)
+           
+      def Create_documents_dropdown_click(self):     
+           self.click(self.CREATE_DOCUMENTS)
+       
+      def Create_task_dropdown_click(self):     
+           self.click(self.CREATE_TASK)         
                  
       def notification_icon_visible(self) -> bool:
            return self.is_visible(self.NOTIFICATION_ICON)
