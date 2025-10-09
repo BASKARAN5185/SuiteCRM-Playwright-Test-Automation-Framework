@@ -37,4 +37,22 @@ class profile_page(BaseClass):
     EMAIL_CLIENT_DROPDOWN="[name='email_link_type']"
     EMAIL_EDITOR_DROPDOWN="[name='editor_type']" 
     
+    '''Profile Page Footer Buttons locators'''
+    SETTINGS_BUTTON="//button[contains(@class,'button')]//img[contains(@src,'setting')]"
+    FOOTER_SAVE_BUTTON='#SAVE_FOOTER'
+    FOOTER_CANCEL_BUTTON='input#CANCEL_FOOTER'
+    FOOTER_RESET_USER_PREFERENCES='#reset_user_preferences_footer'
+    FOOTER_RESET_HOMEPAGE='#reset_homepage_footer'
     
+    '''Profile Page Header Buttons Locators'''
+    HEADER_SAVE_BUTTON='#SAVE_HEADER'
+    HEADER_CANCEL_BUTTON='input#CANCEL_HEADER'
+    HEADER_RESET_USER_PREFERENCES='#reset_user_preferences_header'
+    HEADER_RESET_HOMEPAGE='#reset_homepage_header'
+    
+    '''User Profile Tab Locators'''
+    PROFILE_PAGE_TITLE='//a[text()="Will Westin"]'
+    USER_PROFILE_TAB='a#tab1'
+    ADVANCED_TAB='a#tab2'
+    EXTERNAL_ACCOUNTS_TAB='a#tab3'
+    LAYOUT_OPTIONS_TAB='a#tab4'
