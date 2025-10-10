@@ -56,3 +56,25 @@ class profile_page(BaseClass):
     ADVANCED_TAB='a#tab2'
     EXTERNAL_ACCOUNTS_TAB='a#tab3'
     LAYOUT_OPTIONS_TAB='a#tab4'
+    
+    '''User Profile Section acton method'''
+    def user_profilesection_visible(self) -> bool:
+        self.is_visible(self.USER_PROFILE_HEADER)
+    
+    def user_profile_section_click(self):
+        self.click(self.USER_PROFILE_HEADER)
+        
+    def user_name_visible(self):
+        self.is_visible(self.USER_NAME)
+        
+    def user_type_selction_visible(self):
+        self.is_visible(self.USER_TYPE)
+    
+    def upload_photo(self,file:str):
+        self.upload_file(file)
+        
+    def first_name_enter(self,name:str):    
+        self.type_text(self.USER_NAME,name)
+        
+    def last_namee_enter(self,lastname:str):
+        self.type_text(self.LAST_NAME,lastname)   

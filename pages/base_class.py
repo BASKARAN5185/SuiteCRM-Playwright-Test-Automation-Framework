@@ -75,3 +75,6 @@ class BaseClass:
 
   def uncheck_checkbox(self,selector:str):
         self.page.uncheck(selector)     
+  
+  def upload_file(self,file:str) :
+        self.page.set_input_files(file)     
