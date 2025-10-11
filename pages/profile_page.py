@@ -29,13 +29,15 @@ class profile_page(BaseClass):
     ADDRESS_COUNTRY="input#address_country"
     DESCRIPTION='textarea'
     
-    '''Email Settings under locators'''
+    '''Email Settings section locators'''
+    EMAIL_SETTING_HEADER='h4[text="Email Settings"]'
     EMAIL_ADDRESS_ADD_BUTTON="button.btn.btn-danger.email-address-add-button"
     EMAIL_ADDRESS_REMOVE_BUTTON="button#Users0removeButton0"
     EMAIL_PRIMARY_RADIO_BUTTON='input[type="radio"][name="Users0emailAddressPrimaryFlag"]'
     EMAIL_REPLAY_TO_CHECKBOX='input[type="checkbox"][name="Users0emailAddressReplyToFlag"]'   
     EMAIL_CLIENT_DROPDOWN="[name='email_link_type']"
     EMAIL_EDITOR_DROPDOWN="[name='editor_type']" 
+    EMAIL_INPUT_FIELD='input[type="email"]'
     
     '''Profile Page Footer Buttons locators'''
     SETTINGS_BUTTON="//button[contains(@class,'button')]//img[contains(@src,'setting')]"
@@ -118,6 +120,9 @@ class profile_page(BaseClass):
        
     def im_type_selection_visible(self):
         self.is_visible(self.IM_TYPE_DROPDOWN)
+    
+    def im_type_option_selection(self,value:str):
+        self.select_option_by_value(self.IM_TYPE_DROPDOWN,value)
         
     def address_street_enter(self,addressstreet:str):
         self.type_text(self.ADDRESS_STREET,addressstreet)         
@@ -137,5 +142,43 @@ class profile_page(BaseClass):
     def description_enter(self,description:str):
         self.type_text(self.DESCRIPTION,description)
         
-            
-                                      
+    ''' Email setting section action methods'''
+    def email_setting_section_visible(self) -> bool:
+        return self.is_visible(self.EMAIL_SETTING_HEADER)
+    
+    def email_address_add_button_visible(self)-> bool:
+        return self.is_visible(self.EMAIL_ADDRESS_ADD_BUTTON)
+    
+    def email_address_add_button_click(self):
+        self.click(self.EMAIL_ADDRESS_ADD_BUTTON)
+
+    def  email_address_remove_button_visible(self) -> bool:
+         return self.is_visible(self.EMAIL_ADDRESS_REMOVE_BUTTON) 
+         
+    def email_address_remove_button_click(self):
+        self.click(self.EMAIL_ADDRESS_REMOVE_BUTTON)
+    
+    def email_address_primary_raido_button_click(self,index:int) -> bool:              
+        radio_button=self.EMAIL_PRIMARY_RADIO_BUTTON.nth(index)
+        if self.radio_uncheckbox(radio_button) :
+            return self.radio_checkbox(radio_button)        
+    
+    def email_replayto_ckecked(self,index:int) ->bool:
+        checkbox=self.EMAIL_REPLAY_TO_CHECKBOX.nth(index)
+        if self.uncheck_checkbox(checkbox):
+            return self.check_checkbox(checkbox)
+    
+    def email_client_selection(self,email:str):
+        self.select_option_by_value(self.EMAIL_CLIENT_DROPDOWN,email)
+        
+    def email_editor_selection(self,editor:str):
+        self.select_option_by_value(self.EMAIL_EDITOR_DROPDOWN,editor) 
+           
+    def email_input_field_visible(self,index:int) -> bool:
+        email_input=self.EMAIL_INPUT_FIELD.nth(index)
+        return self.is_visible(email_input)
+    
+    def new_mailid_enter(self,mail:str,index:int):
+        email_field=self.EMAIL_INPUT_FIELD.nth(index)
+        self.type_text(email_field,mail)
+    

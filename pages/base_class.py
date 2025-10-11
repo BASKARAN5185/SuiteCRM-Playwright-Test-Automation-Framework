@@ -78,3 +78,9 @@ class BaseClass:
   
   def upload_file(self,file:str) :
         self.page.set_input_files(file)     
+  
+  def radio_checkbox(self,selector:str,):
+         self.radio_checkbox(selector)
+  
+  def radio_uncheckbox(self,selector:str):
+        self.radio_uncheckbox(selector)       
