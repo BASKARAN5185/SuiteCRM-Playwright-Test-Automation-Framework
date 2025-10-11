@@ -78,3 +78,64 @@ class profile_page(BaseClass):
         
     def last_namee_enter(self,lastname:str):
         self.type_text(self.LAST_NAME,lastname)   
+    
+    '''Employee Information Section action methods''' 
+    def employee_information_section_visible(self) -> bool:
+        self.is_visible(self.EMPLOYEE_STATUS)   
+        
+    def employee_information_section_click(self):
+        self.click(self.EMPLOYEE_STATUS)        
+
+    def employee_status_selection_visible(self):
+        self.is_visible(self.EMPLOYEE_STATUS)
+     
+    def department_selection_visible(self):
+        self.is_visible(self.DEPARTMENT)
+        
+    def report_to_enter(self,reportto:str):
+        self.type_text(self.REPORT_TO,reportto)
+        
+    def display_employee_records_selection_visible(self):
+        self.is_visible(self.DISPLAY_EMPLOYEE_RECORDS)
+        
+    def work_phone_enter(self,workphone:str):
+        self.type_text(self.WORK_PHONE,workphone)
+    
+    def mobile_enter(self,mobile:str) :                     
+        self.type_text(self.MOBILE,mobile)
+    
+    def other_phone_enter(self,otherphone:str):
+        self.type_text(self.OTHER_PHONE,otherphone)
+       
+    def phone_fax_enter(self,phonefax:str):
+        self.type_text(self.PHONE_FAX,phonefax)
+        
+    def home_phone_enter(self,homephone:str):
+        self.type_text(self.HOME_PHONE,homephone)
+    
+    def im_name_enter(self,imname:str):
+        self.type_text(self.IM_NAME,imname)
+       
+    def im_type_selection_visible(self):
+        self.is_visible(self.IM_TYPE_DROPDOWN)
+        
+    def address_street_enter(self,addressstreet:str):
+        self.type_text(self.ADDRESS_STREET,addressstreet)         
+                 
+    def address_city_enter(self,addresscity:str):
+        self.type_text(self.ADDRESS_CITY,addresscity)
+        
+    def address_state_enter(self,addressstate:str):
+        self.type_text(self.ADDRESS_STATE,addressstate)
+    
+    def address_podtal_code_enter(self,addresspostalcode:str):
+        self.type_text(self.ADDRESS_POSTAL_CODE,addresspostalcode) 
+        
+    def address_country_enter(self,addresscountry:str):
+        self.type_text(self.ADDRESS_COUNTRY,addresscountry)
+        
+    def description_enter(self,description:str):
+        self.type_text(self.DESCRIPTION,description)
+        
+            
+                                      
