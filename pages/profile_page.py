@@ -61,7 +61,7 @@ class profile_page(BaseClass):
     
     '''User Profile Section acton method'''
     def user_profilesection_visible(self) -> bool:
-        self.is_visible(self.USER_PROFILE_HEADER)
+        return self.is_visible(self.USER_PROFILE_HEADER)
     
     def user_profile_section_click(self):
         self.click(self.USER_PROFILE_HEADER)
@@ -83,7 +83,7 @@ class profile_page(BaseClass):
     
     '''Employee Information Section action methods''' 
     def employee_information_section_visible(self) -> bool:
-        self.is_visible(self.EMPLOYEE_STATUS)   
+        return self.is_visible(self.EMPLOYEE_STATUS)   
         
     def employee_information_section_click(self):
         self.click(self.EMPLOYEE_STATUS)        
@@ -182,3 +182,18 @@ class profile_page(BaseClass):
         email_field=self.EMAIL_INPUT_FIELD.nth(index)
         self.type_text(email_field,mail)
     
+    ''' Footer section button Actions '''
+    def setting_button_click(self):
+        self.click(self.SETTINGS_BUTTON)
+    
+    def footer_save_button_click(self):
+        self.click(self.FOOTER_SAVE_BUTTON)
+        
+    def footer_cancel_button_click(self):
+        self.click(self.FOOTER_CANCEL_BUTTON)
+    
+    def footer_user_reference_button_click(self):
+        self.click(self.FOOTER_RESET_USER_PREFERENCES) 
+                 
+    def footer_reset_homepage_button_click(self):
+        self.click(self.FOOTER_RESET_HOMEPAGE)                    
