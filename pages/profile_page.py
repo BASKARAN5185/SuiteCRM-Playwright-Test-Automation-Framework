@@ -197,3 +197,29 @@ class profile_page(BaseClass):
                  
     def footer_reset_homepage_button_click(self):
         self.click(self.FOOTER_RESET_HOMEPAGE)                    
+        
+    ''' Header section button actions '''
+    def header_save_button_click(self):
+        self.click(self.HEADER_SAVE_BUTTON)
+        
+    def header_cancel_button_click(self):
+        self.click(self.HEADER_CANCEL_BUTTON)
+    
+    def header_user_reference_button_click(self):
+        self.click(self.HEADER_RESET_USER_PREFERENCES) 
+                 
+    def header_reset_homepage_button_click(self):
+        self.click(self.HEADER_RESET_HOMEPAGE) 
+    
+    ''' User Profile tab ''' 
+    def user_profile_tab_click(self):
+        self.click(self.USER_PROFILE_TAB)      
+    
+    def advance_tab_click(self): 
+        self.click(self.ADVANCED_TAB)
+        
+    def external_account_tab_click(self):  
+        self.click(self.EXTERNAL_ACCOUNTS_TAB)
+    
+    def layout_option_tab_clcik(self):
+        self.click(self.LAYOUT_OPTIONS_TAB)    
