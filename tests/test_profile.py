@@ -222,4 +222,72 @@ def test_employee_status_non_editable(go_to_login_with_profile: ProfilePage):
 def test_department_non_editable(go_to_login_with_profile: ProfilePage):
     profile = go_to_login_with_profile
     assert profile.get_attribute(profile.DEPARTMENT, 'disabled') is not None
-        
+
+''' email section visibility & field editability tests '''
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_section_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_section_visible(), 'Email section not visible'
+    
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_address_section_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_address_section_visible(), 'Email address section not visible'
+    
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_add_email_button_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.add_email_button_visible(), 'Add email button not visible'
+    
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_setting_section_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_setting_section_visible(), 'Email setting section not visible'                
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_address_add_button_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_address_add_button_visible(), 'Email address add button not visible'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_remove_button_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_address_remove_button_visible(), 'Email remove button not visible'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_address_editable(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    assert profile.get_attribute(profile.EMAIL_ADDRESS,'disabled') is None, 'Email address field is not editable'
+    
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_primary_non_editable(go_to_login_with_profile:Profile):
+    profile = go_to_login_with_profile
+    assert profile.get_attribute(profile.EMAIL_PRIMARY,'disabled') is not None, 'Email primary field is editable'
+    
+    
+@pytest.mark.profilepage    
+@pytest.mark.sanity1
+def test_email_opt_out_editable(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    assert profile.get_attribute(profile.EMAIL_OPT_OUT,'disabled') is None, 'Email opt out field is not editable'
+    
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_invalid_validation(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_address_enter('william')
+    profile.header_save_button_click()
+    assert profile.is_visible(profile.EMAIL_INVALID_MSG), 'Invalid email validation failed'
+
+'''   Header Buttons Visibility & Functionality Tests   '''    
+       
+    
