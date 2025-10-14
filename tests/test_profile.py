@@ -410,5 +410,37 @@ def test_reset_homepage_header(go_to_login_with_profile:ProfilePage):
     profile.header_reset_homepage_button_click()
     profile.page.wait_for_load_state('networkidle')
     assert profile.is_visible(profile.SUCCESS_MSG), 'Reset homepage operation failed'                       
-    
-    
+       
+''' Profile tab, Advanced tab & External account tab visibility & click tests '''
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_profile_tab_clickable(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.user_profile_tab_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.USER_PROFILE_TAB_CONTENT), 'Profile tab click operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_advance_tab_clickable(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.advance_tab_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.ADVANCED_TAB_CONTENT), 'Advance tab click operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_external_account_tab_clickable(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.external_account_tab_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.EXTERNAL_ACCOUNT_TAB_CONTENT), 'External account tab click operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_layout_option_tab_clickable(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.layout_option_tab_clcik()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.LAYOUT_OPTION_TAB_CONTENT), 'Layout option tab click operation failed'
+                       
