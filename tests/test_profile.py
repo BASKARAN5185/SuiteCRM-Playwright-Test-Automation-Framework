@@ -289,5 +289,126 @@ def test_email_invalid_validation(go_to_login_with_profile:ProfilePage):
     assert profile.is_visible(profile.EMAIL_INVALID_MSG), 'Invalid email validation failed'
 
 '''   Header Buttons Visibility & Functionality Tests   '''    
-       
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_header_buttons_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.header_save_button_visible(), 'Header save button not visible'
+    profile.header_cancel_button_visible(), 'Header cancel button not visible'
+    profile.header_user_reference_button_visible(), 'Header user reference button not visible'
+    profile.header_reset_homepage_button_visible(), 'Header reset homepage button not visible'
+
+'''   Footer Buttons Visibility & Functionality Tests   '''
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_footer_buttons_visible(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.footer_save_button_visible(), 'Footer save button not visible'
+    profile.footer_cancel_button_visible(), 'Footer cancel button not visible'
+    profile.footer_user_reference_button_visible(), 'Footer user reference button not visible'
+    profile.footer_reset_homepage_button_visible(), 'Footer reset homepage button not visible'
+    
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_add_email_functionality(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    initial_count = profile.EMAIL_INPUT_FIELD.count()
+    profile.add_email_button_click()
+    new_count = profile.EMAIL_INPUT_FIELD.count()
+    assert new_count == initial_count + 1, 'Add email functionality failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_remove_email_functionality(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    initial_count = profile.EMAIL_INPUT_FIELD.count()
+    if initial_count > 1:
+        profile.email_address_remove_button_click()
+        new_count = profile.EMAIL_INPUT_FIELD.count()
+        assert new_count == initial_count - 1, 'Remove email functionality failed'
+    else:
+        pytest.skip('Not enough email addresses to remove one')
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_set_primary_email_functionality(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    if profile.EMAIL_PRIMARY_RADIO_BUTTON.count() > 1:
+        profile.email_address_primary_raido_button_click(1)
+        assert profile.EMAIL_PRIMARY_RADIO_BUTTON.nth(1).is_checked(), 'Set primary email functionality failed'
+    else:
+        pytest.skip('Not enough email addresses to set primary')
+                                   
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_replayto_functionality(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    if profile.EMAIL_REPLAY_TO_CHECKBOX.count() > 0:
+        profile.email_replayto_ckecked(0)
+        assert profile.EMAIL_REPLAY_TO_CHECKBOX.nth(0).is_checked(), 'Email reply-to functionality failed'
+    else:
+        pytest.skip('No email addresses available to set reply-to')    
+        
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_header_save_button_click(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.header_save_button_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.SUCCESS_MSG), 'Profile save operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_footer_save_button_click(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.footer_save_button_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.SUCCESS_MSG), 'Profile save operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_client_selection(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_client_selection('gmail')
+    assert 'gmail' in profile.get_attribute(profile.EMAIL_CLIENT_DROPDOWN,'value'), 'Email client selection failed'             
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_email_editor_selection(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.email_editor_selection('html')
+    assert 'html' in profile.get_attribute(profile.EMAIL_EDITOR_DROPDOWN,'value'), 'Email editor selection failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_revert_user_preferences_footer(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.footer_user_reference_button_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.SUCCESS_MSG), 'Revert user preferences operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_revert_user_preferences_header(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.header_user_reference_button_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.SUCCESS_MSG), 'Revert user preferences operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_reset_homepage_footer(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.footer_reset_homepage_button_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.SUCCESS_MSG), 'Reset homepage operation failed'
+
+@pytest.mark.profilepage
+@pytest.mark.sanity1
+def test_reset_homepage_header(go_to_login_with_profile:ProfilePage):
+    profile = go_to_login_with_profile
+    profile.header_reset_homepage_button_click()
+    profile.page.wait_for_load_state('networkidle')
+    assert profile.is_visible(profile.SUCCESS_MSG), 'Reset homepage operation failed'                       
+    
     
