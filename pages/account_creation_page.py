@@ -43,3 +43,52 @@ class account_creation_page(BaseClass):
    SAVE_BUTTON = "button#SAVE"
    CANCEL_BUTTON = "button#CANCEL"
    EDIT_FORM = "#EditView"
+
+   ''' billing address section locators '''
+   def enter_billing_street(self, street):
+       self.type_text(self.BILLING_STREET, street)
+
+   def enter_billing_city(self, city):
+       self.type_text(self.BILLING_CITY, city)
+       
+   def enter_billing_state(self, state):
+         self.type_text(self.BILLING_STATE, state) 
+               
+   def enter_billing_postal_code(self, postal_code):
+       self.type_text(self.BILLING_POSTAL_CODE, postal_code)      
+   
+   def enter_billing_country(self, country):
+       self.type_text(self.BILLING_COUNTRY, country)
+       
+   ''' shipping address section locators '''
+   def enter_shipping_street(self, street):   
+       self.type_text(self.SHIPPING_STREET, street)
+       
+   def enter_shipping_city(self, city):
+       self.type_text(self.SHIPPING_CITY, city)
+       
+   def enter_shipping_state(self, state):
+       self.type_text(self.SHIPPING_STATE, state)
+       
+   def enter_shipping_postal_code(self, postal_code):
+       self.type_text(self.SHIPPING_POSTAL_CODE, postal_code)
+       
+   def enter_shipping_country(self, country):
+         self.type_text(self.SHIPPING_COUNTRY, country)
+   
+   def click_shipping_copy_checkbox(self):
+       self.click_element(self.SHIPPING_COPY_CHECKBOX)
+           
+   def billing_section(self, street, city, state, postal_code, country):
+       self.enter_billing_street(street)
+       self.enter_billing_city(city)
+       self.enter_billing_state(state)
+       self.enter_billing_postal_code(postal_code)
+       self.enter_billing_country(country)
+       
+   def shipping_section(self, street, city, state, postal_code, country):
+       self.enter_shipping_street(street)
+       self.enter_shipping_city(city)
+       self.enter_shipping_state(state)
+       self.enter_shipping_postal_code(postal_code)
+       self.enter_shipping_country(country)           
