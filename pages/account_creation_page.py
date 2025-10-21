@@ -92,3 +92,30 @@ class account_creation_page(BaseClass):
        self.enter_shipping_state(state)
        self.enter_shipping_postal_code(postal_code)
        self.enter_shipping_country(country)           
+       
+       ''' account info section action methods '''
+   def  accoun_type(self,type:str):
+        self.select_option_by_value(self.ACCOUNT_TYPE,type)
+        
+   def industry(self,industry:str):
+        self.select_option_by_value(self.INDUSTRY,industry)
+             
+   def annual_revenue(self,revenue:str):
+        self.type_text(self.ANNUAL_REVENUE,revenue)
+        
+   def employees(self,employees:str):
+           self.type_text(self.EMPLOYEES,employees)
+    
+   def description(self,description:str):
+        self.type_text(self.DESCRIPTION,description)
+     
+   ''' assigned user section action methods '''
+   def assigned_user_name(self,user_name:str):
+        self.type_text(self.ASSIGNED_USER_NAME_INPUT,user_name)
+        
+   def click_assigned_user_select_button(self):
+        self.click(self.ASSIGNED_USER_SELECT_BUTTON)                                      
+        
+   def click_assigned_user_clear_button(self):
+        self.click(self.ASSIGNED_USER_CLEAR_BUTTON)
+        
