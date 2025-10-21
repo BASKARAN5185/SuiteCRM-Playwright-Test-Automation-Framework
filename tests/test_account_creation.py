@@ -19,11 +19,24 @@ def test_account_creation_page_navigation(page):
 def test_enter_billing_address(test_account_creation_page_navigation, street, city, state, postal_code, country):
     account_page = account_creation_page(test_account_creation_page_navigation)
     account_page.billing_section(street, city, state, postal_code, country)
-    assert test_account_creation_page_navigation.locator(account_page.BILLING_STREET).input_value() == street
-    assert test_account_creation_page_navigation.locator(account_page.BILLING_CITY).input_value() == city
-    assert test_account_creation_page_navigation.locator(account_page.BILLING_STATE).input_value() == state
-    assert test_account_creation_page_navigation.locator(account_page.BILLING_POSTAL_CODE).input_value() == postal_code
-    assert test_account_creation_page_navigation.locator(account_page.BILLING_COUNTRY).input_value() == country    
-    
+    assert test_account_creation_page_navigation.locator(account_page.BILLING_STREET).input_value() == street,'street does not match'
+    assert test_account_creation_page_navigation.locator(account_page.BILLING_CITY).input_value() == city,'city does not match'
+    assert test_account_creation_page_navigation.locator(account_page.BILLING_STATE).input_value() == state,'state value does not match'
+    assert test_account_creation_page_navigation.locator(account_page.BILLING_POSTAL_CODE).input_value() == postal_code,'postal code does not match'
+    assert test_account_creation_page_navigation.locator(account_page.BILLING_COUNTRY).input_value() == country,'country does not match'    
 
-    
+@pytest.param("'street''city''state''postalcode''country'", [
+    ('nortt strret','new york','ny','100001','usa'),
+    ('southern','los angeles','ca','90001','usa')     
+    ('eastern','miami','fl','33101','usa'),
+    ('western','seattle','wa','98101','usa'),
+    ('','','','','')])    
+def test_enter_shoping_address(test_account_creation_page_navigation : account_creation_page ,street,city,state,postalcode,country):
+    account_page =account_creation_page(test_account_creation_page_navigation)
+    account_page.shipping_section(street,city,state,postalcode,country)  
+    assert test_account_creation_page_navigation.locator(account_page.SHIPPING_STREET).input_value() == street ,'street does not match'
+    assert test_account_creation_page_navigation.SHIPPING_CITY.input_value() == city,'city does not match'
+    assert test_account_creation_page_navigation.SHIPPING_STATE.input_value() == state,'state does not match'
+    assert test_account_creation_page_navigation.SHIPPING_POSTAL_CODE.input_value() == postalcode,'postal code does not match'   
+    assert test_account_creation_page_navigation.SHIPPING_COUNTRY.input_value() == country,'country does not match'
+
