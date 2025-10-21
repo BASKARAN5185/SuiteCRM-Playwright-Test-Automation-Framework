@@ -119,3 +119,32 @@ class account_creation_page(BaseClass):
    def click_assigned_user_clear_button(self):
         self.click(self.ASSIGNED_USER_CLEAR_BUTTON)
         
+   ''' parent account section action methods '''
+   def parent_name(self,parent_name:str):
+        self.type_text(self.PARENT_NAME_INPUT,parent_name)
+        
+   def click_parent_select_button(self):
+        self.click(self.PARENT_SELECT_BUTTON)
+    
+   def click_parent_clear_button(self):
+        self.click(self.PARENT_CLEAR_BUTTON)
+    
+        ''' campaign section action methods ''' 
+   def campaign_name(self,campaign_name:str):  
+        self.type_text(self.CAMPAIGN_NAME_INPUT,campaign_name)
+   
+   def click_campaign_select_button(self):
+        self.click(self.CAMPAIGN_SELECT_BUTTON)
+    
+   def click_campaign_clear_button(self):
+        self.click(self.CAMPAIGN_CLEAR_BUTTON)
+    
+        ''' account creation buttons action methods '''    
+   def click_save_button(self):
+        self.click(self.SAVE_BUTTON)
+    
+   def click_cancel_button(self):
+        self.click(self.CANCEL_BUTTON)
+    
+   def is_edit_form_displayed(self) -> bool:       
+        return self.is_element_visible(self.EDIT_FORM)                              
