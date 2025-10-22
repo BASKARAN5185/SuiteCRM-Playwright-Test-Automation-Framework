@@ -55,3 +55,84 @@ def test_enter_account_info(test_account_creation_page_navigation : account_crea
     assert account_creation_page.EMPLOYEES.input_value() == employee ,"employee type does not match"
     assert account_creation_page.DESCRIPTION.input_value() == description ,"account type does not match"
     assert account_creation_page.INDUSTRY.input_value() == industry ,"account type does not match"
+    
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_assigned_user_name_enter(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.assigned_user_name('Ragu')
+    assert account_page.ASSIGNED_USER_NAME_INPUT.input_value() == 'Ragu'
+    
+    
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_assigned_user_clear_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_assigned_user_clear_button()
+
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_assigned_user_select_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_assigned_user_select_button() 
+    
+
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_parent_name_enter(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.parent_name('Jeeve')
+    assert account_page.PARENT_NAME_INPUT.input_value() == 'Jeeva'
+    
+    
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_parent_clear_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_assigned_user_clear_button()
+
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_select_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_assigned_user_select_button()           
+
+
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_campain_name_enter(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.campaign_name("Sales")
+    assert account_page.CAMPAIGN_NAME_INPUT.input_value() == 'Sales'
+    
+    
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_compain_clear_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_campaign_clear_button()
+
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_assigned_user_select_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_assigned_user_select_button() 
+
+
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_save_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_save_button()
+    
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_cancel_button_click(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.click_cancel_button()
+
+@pytest.mark.smoke
+@pytest.mark.accountreationpage
+def test_edit_from_is_displayed(test_account_creation_page_navigation : account_creation_page):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.is_edit_form_displayed()     
