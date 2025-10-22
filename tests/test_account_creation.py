@@ -40,3 +40,18 @@ def test_enter_shoping_address(test_account_creation_page_navigation : account_c
     assert test_account_creation_page_navigation.SHIPPING_POSTAL_CODE.input_value() == postalcode,'postal code does not match'   
     assert test_account_creation_page_navigation.SHIPPING_COUNTRY.input_value() == country,'country does not match'
 
+@pytest.mark.smoke
+@pytest.mark.accountcreationpage
+@pytest.param("'actype' 'revenue' 'employee' 'description' 'industry'",[(1,'10000','karthik','Manger','IT')])
+def test_enter_account_info(test_account_creation_page_navigation : account_creation_page,actype,revenue,employee,description,industry):
+    account_page=account_creation_page(test_account_creation_page_navigation)
+    account_page.accoun_type(actype)
+    account_page.annual_revenue(revenue)
+    account_page.employees(employee)
+    account_page.description(description)
+    account_page.industry(industry)
+    assert account_creation_page.ACCOUNT_TYPE.input_value() == actype ,"account type does not match"
+    assert account_creation_page.ANNUAL_REVENUE.input_value() == revenue ,"revenue does not match"
+    assert account_creation_page.EMPLOYEES.input_value() == employee ,"employee type does not match"
+    assert account_creation_page.DESCRIPTION.input_value() == description ,"account type does not match"
+    assert account_creation_page.INDUSTRY.input_value() == industry ,"account type does not match"
