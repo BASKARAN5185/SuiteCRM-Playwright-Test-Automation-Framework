@@ -68,4 +68,23 @@ class CreateContactPage(BaseClass):
 
     def click_cancel(self):
         self.click(self.cancel_button)
-        
+    
+        ''' Primary address actions methods '''    
+    def enter_primary_street(self, street: str):
+        self.fill(self.primary_street_input, street)
+
+    def enter_primary_city(self, city: str):
+        self.fill(self.primary_city_input, city)
+
+    def enter_primary_state(self, state: str):
+        self.fill(self.primary_state_input, state)
+
+    def enter_primary_postal_code(self, postal_code: str):
+        self.fill(self.primary_postal_input, postal_code)
+
+    def enter_primary_country(self, country: str):
+        self.fill(self.primary_country_input, country)
+
+    def get_header_text(self) -> str:
+        return self.get_text(self.header_text)
+    
